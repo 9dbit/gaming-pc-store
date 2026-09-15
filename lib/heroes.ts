@@ -9,12 +9,13 @@ export function getHeroSlides() {
   const mobileGod = read("mobile-god.b64");
   const mobileRacing = read("mobile-racing.b64");
   const mobileRpg = read("mobile-rpg.part1") + read("mobile-rpg.part2");
+  const desktopGod = read("desktop-god.b64");
+  const desktopRacing = read("desktop-racing.b64");
+  const desktopRpg = read("desktop-rpg.b64");
 
-  // Mobile artwork is preserved at 1:1. Desktop renders the same source inside
-  // a strict 3:1 artboard until the dedicated wide assets finish the upload pipeline.
   return [
-    { id: "god", mobile: `data:image/webp;base64,${mobileGod}`, desktop: `data:image/webp;base64,${mobileGod}`, alt: "NEXRIG Play Like a God gaming hardware campaign" },
-    { id: "racing", mobile: `data:image/webp;base64,${mobileRacing}`, desktop: `data:image/webp;base64,${mobileRacing}`, alt: "NEXRIG Hyper Racing high FPS gaming campaign" },
-    { id: "rpg", mobile: `data:image/webp;base64,${mobileRpg}`, desktop: `data:image/webp;base64,${mobileRpg}`, alt: "NEXRIG RPG gaming world campaign" },
+    { id: "god", mobile: `data:image/webp;base64,${mobileGod}`, desktop: `data:image/webp;base64,${desktopGod}`, alt: "NEXRIG Play Like a God gaming hardware campaign" },
+    { id: "racing", mobile: `data:image/webp;base64,${mobileRacing}`, desktop: `data:image/webp;base64,${desktopRacing}`, alt: "NEXRIG Hyper Racing high FPS gaming campaign" },
+    { id: "rpg", mobile: `data:image/webp;base64,${mobileRpg}`, desktop: `data:image/webp;base64,${desktopRpg}`, alt: "NEXRIG RPG gaming world campaign" },
   ];
 }
