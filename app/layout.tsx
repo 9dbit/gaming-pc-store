@@ -3,7 +3,9 @@ import "./globals.css";
 import "./storefront.css";
 import "./commerce.css";
 import "./commerce-v2.css";
+import "./chrome.css";
 import PaymentStrip from "../components/PaymentStrip";
+import {SiteHeader,MobileNav} from "../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id">
-      <body>{children}<PaymentStrip/></body>
+      <body><SiteHeader/>{children}<PaymentStrip/><MobileNav/></body>
     </html>
   );
 }
