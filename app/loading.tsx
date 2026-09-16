@@ -1,0 +1,1 @@
+export default function Loading(){return <main className="statePage"><section className="stateCard loadingCard"><span className="kicker">NEXRIG</span><h1>Loading your hardware.</h1><p>Preparing products, compatibility data, and storefront details.</p><div className="skeletonRows"><i/><i/><i/></div></section></main>}
