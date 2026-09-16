@@ -24,7 +24,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id">
-      <body><SiteHeader/>{children}<PaymentStrip/><MobileNav/></body>
+      <body>
+        <SiteHeader/>
+        {children}
+        <PaymentStrip/>
+        <MobileNav/>
+        {/* Chatvice Chat Widget */}
+        <script src="https://chatvice.app/api/widget/chatvice.js?merchant=m_04ab193f4d47b1b4" async></script>
+      </body>
     </html>
   );
 }
