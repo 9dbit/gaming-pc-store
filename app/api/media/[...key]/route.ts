@@ -25,7 +25,8 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ key: strin
     if (!obj.Body) return new NextResponse("Not Found", { status: 404 });
 
     const bytes = await obj.Body.transformToByteArray();
-    return new NextResponse(bytes, {
+    const body = Buffer.from(bytes);
+    return new NextResponse(body, {
       status: 200,
       headers: {
         "Content-Type": obj.ContentType || "application/octet-stream",
