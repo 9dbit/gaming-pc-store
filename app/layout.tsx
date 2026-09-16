@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | NEXRIG"
   },
   description: "Premium gaming PC components, compatible hardware, monitors, storage, memory, cooling and build recommendations.",
-  metadataBase: new URL("https://gaming-pc-store.up.railway.app")
+  metadataBase: new URL("https://gaming-pc-store-web-production.up.railway.app")
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
