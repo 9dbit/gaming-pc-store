@@ -6,6 +6,7 @@ import "./commerce-v2.css";
 import "./chrome.css";
 import "./qa.css";
 import "./polish.css";
+import "./final-freeze.css";
 import PaymentStrip from "../components/PaymentStrip";
 import {SiteHeader,MobileNav} from "../components/SiteChrome";
 
