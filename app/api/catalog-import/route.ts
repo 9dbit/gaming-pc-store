@@ -13,7 +13,7 @@ const sources = {
     key: "products/power-supply/atx-psu.jpg",
   },
   "gaming-case": {
-    source: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Midi_tower_PC_case.jpg",
+    source: "https://upload.wikimedia.org/wikipedia/commons/2/27/Midi_tower_PC_case.jpg",
     key: "products/gaming-case/mid-tower-case.jpg",
   },
   monitor: {
@@ -21,11 +21,11 @@ const sources = {
     key: "products/monitor/gaming-monitor.jpg",
   },
   cable: {
-    source: "https://commons.wikimedia.org/wiki/Special:Redirect/file/HDMI_Cable.JPG",
+    source: "https://upload.wikimedia.org/wikipedia/commons/9/90/HDMI_Cable.JPG",
     key: "products/cable/hdmi-cable.jpg",
   },
   cooling: {
-    source: "https://commons.wikimedia.org/wiki/Special:Redirect/file/CPU_air_cooler.jpg",
+    source: "https://upload.wikimedia.org/wikipedia/commons/0/09/CPU_air_cooler.jpg",
     key: "products/cooling/cpu-air-cooler.jpg",
   },
 } as const;
