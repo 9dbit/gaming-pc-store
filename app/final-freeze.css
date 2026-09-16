@@ -1,0 +1,35 @@
+/* Final storefront freeze pass: hierarchy, density, floating-widget spacing and micro-interactions */
+:root{--nx-card:#101216;--nx-line:rgba(255,255,255,.075);--nx-red:#ef1119}
+
+/* Homepage hierarchy */
+.heroCarousel{isolation:isolate}.categoryWrap{padding-top:28px}.productsWrap.homeRail{padding-top:42px}.productsWrap.homeRail:nth-of-type(even){position:relative}.sectionHead h2{letter-spacing:-.7px}.homeEditorial,.homeSeoCopy{margin-top:44px}.homeSeoCopy{border-top:1px solid var(--nx-line);padding-top:34px}.homeSeoCopy h2{max-width:760px}.homeSeoCopy>p{max-width:920px}.homeTrust div{min-height:128px;justify-content:flex-start}.builder.homeBuilder{overflow:hidden;position:relative}.builder.homeBuilder:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-90px;top:-100px;background:radial-gradient(circle,rgba(239,17,25,.16),transparent 68%);pointer-events:none}
+
+/* Category/shop density */
+.commerceSection .pageTitle{margin-bottom:18px}.commerceToolbar{position:relative;z-index:3}.filterPanel{border:1px solid var(--nx-line);background:#0e1013}.filterPanel h3{letter-spacing:-.2px}.commerceGrid{align-items:stretch}.commerceCard{border-color:var(--nx-line)}.commerceCard:hover{border-color:rgba(239,17,25,.32)}.commerceBody .stockRow{margin-top:auto}.commerceBody .addBtn{margin-top:8px}.commerceBody .priceRow{min-height:34px;align-items:flex-end}.commerceBody h3{min-height:2.7em}.productImage{overflow:hidden}.productImage img{aspect-ratio:1/1;object-fit:cover}
+
+/* Search / empty state polish */
+.searchHero{border:1px solid var(--nx-line);box-shadow:0 14px 45px rgba(0,0,0,.16)}.autosuggest{border:1px solid var(--nx-line);border-radius:14px;padding:10px 12px;margin-top:9px}.emptyState{border:1px dashed rgba(255,255,255,.11);background:#0f1114;border-radius:16px;padding:28px;text-align:center;color:#929ba6}.emptyState a{color:#fff;text-decoration:underline;text-decoration-color:var(--nx-red);text-underline-offset:4px}
+
+/* Product detail visual rhythm */
+.productV2 .contentSection{scroll-margin-top:110px}.productStage.hasImage{border:1px solid var(--nx-line)}.productBuyBox{border:1px solid var(--nx-line)}.productStory,.productInfoGrid,.reviewSection,.faqSection{border-top:1px solid rgba(255,255,255,.055)}.faqSection details[open]{background:rgba(255,255,255,.015)}.faqSection details{padding-left:8px;padding-right:8px}.primaryBuy,.quickBuy,.wishWide,.addBtn,.placeOrder{will-change:transform}.primaryBuy:focus-visible,.quickBuy:focus-visible,.wishWide:focus-visible,.addBtn:focus-visible,.placeOrder:focus-visible,.siteHeader button:focus-visible,.siteHeader a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* Checkout */
+.orderSummaryV2{position:relative}.summaryTrust{border:1px solid rgba(105,217,138,.13)}.checkoutBlock,.orderSummaryV2{box-shadow:0 18px 50px rgba(0,0,0,.10)}.shippingCard,.paymentCard{transition:transform .16s ease,border-color .16s ease,background .16s ease}.shippingCard.selected,.paymentCard.selected{box-shadow:inset 0 0 0 1px rgba(239,17,25,.16)}
+
+/* Chatvice widget: keep floating launcher above mobile bottom nav instead of overlapping it. */
+body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{z-index:94!important}
+
+@media(max-width:759px){
+ body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{bottom:calc(82px + env(safe-area-inset-bottom))!important}
+ .categoryWrap{padding-top:22px}.productsWrap.homeRail{padding-top:32px}.sectionHead h2{font-size:22px}.homeEditorial,.homeSeoCopy{margin-top:34px}.homeTrust div{min-height:112px}
+ .commerceToolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.commerceToolbar .searchField{grid-column:1/-1}.commerceToolbar select{min-height:42px}.filterPanel{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px;margin-bottom:14px}.filterPanel h3,.filterPanel>p{grid-column:1/-1}.filterPanel label{min-width:0}.filterPanel select,.filterPanel input[type="range"]{width:100%}.commerceBody h3{min-height:2.6em}.commerceBody .priceRow strong{font-size:13px}.commerceBody .addBtn{min-height:39px}
+ .productStory,.productInfoGrid,.reviewSection,.faqSection{padding-top:24px}.productPaymentBlock{margin-bottom:2px}.stickyPay{bottom:calc(78px + env(safe-area-inset-bottom))}
+}
+
+@media(min-width:760px){
+ .filterPanel{position:sticky;top:116px;align-self:start}.commerceToolbar{margin-bottom:16px}.commerceGrid{gap:16px}.commerceCard{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.commerceCard:hover{transform:translateY(-4px);box-shadow:0 18px 46px rgba(0,0,0,.18)}.orderSummaryV2{position:sticky;top:116px}
+}
+
+@media(min-width:1180px){.sectionHead h2{font-size:30px}.homeProductRail{grid-auto-columns:235px}.commerceGrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+@media(prefers-reduced-motion:reduce){.commerceCard,.shippingCard,.paymentCard,.primaryBuy,.quickBuy,.wishWide,.addBtn,.placeOrder{transition:none!important;transform:none!important}}
