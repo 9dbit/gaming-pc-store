@@ -8,7 +8,7 @@ import "./qa.css";
 import "./polish.css";
 import "./final-freeze.css";
 import PaymentStrip from "../components/PaymentStrip";
-import {SiteHeader,MobileNav} from "../components/SiteChrome";
+import {SiteHeader} from "../components/SiteChrome";
 import ChatviceWidget from "../components/ChatviceWidget";
 
 export const metadata: Metadata = {
@@ -31,7 +31,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader/>
         {children}
         <PaymentStrip/>
-        <MobileNav/>
         <ChatviceWidget/>
       </body>
     </html>
