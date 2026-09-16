@@ -1,15 +1,56 @@
+import type {Metadata} from "next";
 import Link from "next/link";
 import {ShoppingCart} from "lucide-react";
 import CommerceEngine from "../../components/CommerceEngine";
 import {products} from "../../lib/catalog";
 
+const BASE="https://gaming-pc-store-web-production.up.railway.app";
 const humanize=(s:string)=>s.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+
+type Params={params:Promise<{slug:string[]}>};
+
+export async function generateMetadata({params}:Params):Promise<Metadata>{
+  const {slug}=await params;
+  const [type,...rest]=slug;
+  const leaf=rest.join("-")||"all";
+  const path=`/${slug.join("/")}`;
+  const privateRoute=["search","cart","wishlist","checkout","account"].includes(type);
+
+  if(type==="product"){
+    const p=products.find(x=>x.slug===leaf);
+    if(p) return {
+      title:p.name,
+      description:p.description,
+      alternates:{canonical:path},
+      robots:{index:true,follow:true},
+      openGraph:{type:"website",url:BASE+path,title:`${p.name} | NEXRIG`,description:p.description,images:[{url:p.image,alt:p.name}]},
+      twitter:{card:"summary_large_image",title:`${p.name} | NEXRIG`,description:p.description,images:[p.image]}
+    };
+  }
+
+  if(type==="category"){
+    const title=leaf==="all"?"Gaming PC Components":`${humanize(leaf)} Gaming`;
+    const description=leaf==="all"?"Browse gaming PC components including processor, GPU, motherboard, DDR5 memory, NVMe storage, PSU, cooling, case, monitor, and connectivity.":`Browse ${humanize(leaf)} products, specifications, stock information, and compatible gaming PC components at NEXRIG.`;
+    return {title,description,alternates:{canonical:path},robots:{index:true,follow:true},openGraph:{type:"website",url:BASE+path,title:`${title} | NEXRIG`,description}};
+  }
+
+  if(privateRoute){
+    return {title:humanize(type),alternates:{canonical:path},robots:{index:false,follow:false,noarchive:true,nosnippet:true}};
+  }
+
+  if(type==="builder") return {title:"PC Builder Compatibility Checker",description:"Build a gaming PC and validate CPU socket, memory generation, PSU headroom, GPU clearance, case fit, and cooling compatibility.",alternates:{canonical:path},robots:{index:true,follow:true}};
+  if(type==="gaming-pc") return {title:`${humanize(leaf)} Gaming PC Build`,description:"Explore a curated gaming PC build and validate each part with the NEXRIG compatibility engine.",alternates:{canonical:path},robots:{index:true,follow:true}};
+  if(type==="guides") return {title:humanize(leaf),description:"NEXRIG gaming PC guide covering performance targets, component selection, and compatibility checks.",alternates:{canonical:path},robots:{index:true,follow:true}};
+  if(type==="brand") return {title:`${humanize(leaf)} Gaming Hardware`,description:`Browse ${humanize(leaf)} gaming hardware and compatible PC components at NEXRIG.`,alternates:{canonical:path},robots:{index:true,follow:true}};
+
+  return {title:humanize(slug.join("-")),alternates:{canonical:path},robots:{index:false,follow:true}};
+}
 
 function Shell({title,kicker="NEXRIG",children}:{title:string;kicker?:string;children:React.ReactNode}){
   return <main><header className="topbar"><Link href="/" className="brand">NEX<span>RIG</span></Link><Link href="/cart"><ShoppingCart size={21}/></Link></header><div className="pageHero"><span className="kicker">{kicker}</span><h1>{title}</h1><p>Performance-first PC components, compatibility guidance, official warranty, and expert support for your next gaming rig.</p></div>{children}<div className="pageLinks"><Link href="/">Home</Link><Link href="/category/all">All Components</Link><Link href="/builder">PC Builder</Link><Link href="/guides/build-gaming-pc">Guides</Link></div></main>
 }
 
-export default async function CatchAll({params}:{params:Promise<{slug:string[]}>}){
+export default async function CatchAll({params}:Params){
   const {slug}=await params;
   const [type,...rest]=slug;
   const leaf=rest.join("-")||"all";
