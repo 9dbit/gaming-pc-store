@@ -2,21 +2,21 @@ export function getHeroSlides() {
   return [
     {
       id: "rpg",
-      mobile: "/api/media/heroes/mobile/hero-rpg-mobile.webp",
-      desktop: "/api/media/heroes/desktop/hero-rpg-desktop.png",
-      alt: "NEXRIG RPG gaming world campaign",
+      mobile: "/media/tuan-kuda/heroes/hero-rpg.webp",
+      desktop: "/media/tuan-kuda/heroes/hero-rpg.webp",
+      alt: "TUAN KUDA SL 64 COR3 RPG gaming campaign",
     },
     {
       id: "racing",
-      mobile: "/api/media/heroes/mobile/hero-racing-mobile.webp",
-      desktop: "/api/media/heroes/desktop/hero-racing-desktop.png",
-      alt: "NEXRIG Hyper Racing gaming campaign",
+      mobile: "/media/tuan-kuda/heroes/hero-racing.webp",
+      desktop: "/media/tuan-kuda/heroes/hero-racing.webp",
+      alt: "TUAN KUDA SL 64 COR3 Hyper Racing gaming campaign",
     },
     {
       id: "god",
-      mobile: "/api/media/heroes/mobile/hero-god-mobile.webp",
-      desktop: "/api/media/heroes/desktop/hero-god-desktop.png",
-      alt: "NEXRIG Play Like a God gaming campaign",
+      mobile: "/media/tuan-kuda/heroes/hero-god.webp",
+      desktop: "/media/tuan-kuda/heroes/hero-god.webp",
+      alt: "TUAN KUDA SL 64 COR3 Play Like a God gaming campaign",
     },
   ];
 }
