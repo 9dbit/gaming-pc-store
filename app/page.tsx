@@ -10,10 +10,10 @@ const categories = [
 ] as const;
 
 const products = [
-  {name:"AMD Ryzen 7 9800X3D",cat:"Processor",price:"Rp 8.799.000",rating:"4.9",img:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85"},
-  {name:"ROG Strix X870-F Gaming WiFi",cat:"Motherboard",price:"Rp 7.299.000",rating:"4.8",img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85"},
-  {name:"RTX Gaming Graphics Card",cat:"Graphics Card",price:"Rp 17.999.000",rating:"4.9",img:"https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=85"},
-  {name:"DDR5 RGB 32GB Kit",cat:"Memory",price:"Rp 2.399.000",rating:"4.7",img:"https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=85"}
+  {name:"AMD Ryzen 7 9800X3D",cat:"Processor",price:"Rp 8.799.000",rating:"4.9",img:"/api/media/products/processor/amd-ryzen-7-9800x3d.jpg"},
+  {name:"ROG Strix X870-F Gaming WiFi",cat:"Motherboard",price:"Rp 7.299.000",rating:"4.8",img:"/api/media/products/motherboard/x870-gaming-wifi.jpg"},
+  {name:"RTX 64 COR3 Gaming GPU",cat:"Graphics Card",price:"Rp 17.999.000",rating:"4.9",img:"/api/media/products/gpu/rtx-64-cor3-gaming-gpu.jpg"},
+  {name:"NEXRIG DDR5 RGB 64 COR3",cat:"Memory",price:"Rp 3.199.000",rating:"4.7",img:"/api/media/products/memory/nexrig-ddr5-rgb-64-cor3.jpg"}
 ];
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
     <section id="shop" className="productsWrap">
       <div className="sectionHead"><div><span className="kicker">TRENDING NOW</span><h2>Featured gear</h2></div><Link href="/category/all">View all</Link></div>
       <div className="productGrid">{products.map((p,i)=><Link href={`/product/${p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`} className="card" key={p.name}>
-        <div className="imageBox"><img src={p.img} alt={p.name}/><span className="badge">{i<2?"BEST SELLER":"NEW"}</span><span className="heart"><Heart size={17}/></span></div>
+        <div className="imageBox"><img src={p.img} alt={p.name} loading={i < 2 ? "eager" : "lazy"}/><span className="badge">{i<2?"BEST SELLER":"NEW"}</span><span className="heart"><Heart size={17}/></span></div>
         <div className="cat">{p.cat}</div><h3>{p.name}</h3><div className="rating"><Star size={14} fill="currentColor"/> {p.rating}</div><strong>{p.price}</strong>
       </Link>)}</div>
     </section>
