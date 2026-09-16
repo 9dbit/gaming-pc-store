@@ -19,7 +19,16 @@ export default function HeroCarousel({ slides }: { slides: Slide[] }) {
           <article className={`heroSlide ${i === active ? "isActive" : ""}`} key={slide.id}>
             <picture>
               <source media="(min-width: 760px)" srcSet={slide.desktop} />
-              <img src={slide.mobile} alt={slide.alt} />
+              <img
+                src={slide.mobile}
+                alt={slide.alt}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                onError={(event) => {
+                  const img = event.currentTarget;
+                  if (img.src !== slide.desktop) img.src = slide.desktop;
+                }}
+              />
             </picture>
             <Link href="/category/all" className="heroClick" aria-label="Shop NEXRIG products" />
           </article>
