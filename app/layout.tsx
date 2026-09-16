@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./storefront.css";
 import PaymentStrip from "../components/PaymentStrip";
 
 export const metadata: Metadata = {
