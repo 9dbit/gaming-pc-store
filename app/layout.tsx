@@ -9,6 +9,7 @@ import "./polish.css";
 import "./final-freeze.css";
 import PaymentStrip from "../components/PaymentStrip";
 import {SiteHeader,MobileNav} from "../components/SiteChrome";
+import ChatviceWidget from "../components/ChatviceWidget";
 
 export const metadata: Metadata = {
   title: {
@@ -31,8 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <PaymentStrip/>
         <MobileNav/>
-        {/* Chatvice Chat Widget */}
-        <script src="https://chatvice.app/api/widget/chatvice.js?merchant=m_04ab193f4d47b1b4" async></script>
+        <ChatviceWidget/>
       </body>
     </html>
   );
