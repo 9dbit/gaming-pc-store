@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Star, ShoppingCart, ShieldCheck, Truck, Cpu, CircuitBoard, MemoryStick, HardDrive, Zap, Box, Monitor } from "lucide-react";
 
 const demoProducts = [
-  { name:"AMD Ryzen 7 9800X3D", cat:"Processor", price:"Rp 8.799.000", img:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=92" },
-  { name:"RTX 64 COR3 Gaming GPU", cat:"Graphics Card", price:"Rp 17.999.000", img:"https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1200&q=92" },
-  { name:"NEXRIG DDR5 RGB 64 COR3", cat:"Memory", price:"Rp 3.199.000", img:"https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=1200&q=92" },
-  { name:"X870 Gaming WiFi", cat:"Motherboard", price:"Rp 7.299.000", img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=92" }
+  { name:"AMD Ryzen 7 9800X3D", cat:"Processor", price:"Rp 8.799.000", img:"/api/media/products/processor/amd-ryzen-7-9800x3d.jpg" },
+  { name:"RTX 64 COR3 Gaming GPU", cat:"Graphics Card", price:"Rp 17.999.000", img:"/api/media/products/gpu/rtx-64-cor3-gaming-gpu.jpg" },
+  { name:"NEXRIG DDR5 RGB 64 COR3", cat:"Memory", price:"Rp 3.199.000", img:"/api/media/products/memory/nexrig-ddr5-rgb-64-cor3.jpg" },
+  { name:"X870 Gaming WiFi", cat:"Motherboard", price:"Rp 7.299.000", img:"/api/media/products/motherboard/x870-gaming-wifi.jpg" }
 ];
 
 const humanize=(s:string)=>s.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
@@ -19,7 +19,7 @@ function imageForProduct(title:string){
   return demoProducts[0].img;
 }
 
-function ProductGrid(){return <div className="productGrid innerGrid">{demoProducts.map((p,i)=><Link className="card" href={`/product/${productSlug(p.name)}`} key={p.name}><div className="productImage"><img src={p.img} alt={p.name}/><span className="miniBadge">{i<2?"POPULAR":"NEXRIG PICK"}</span></div><div className="cat">{p.cat}</div><h3>{p.name}</h3><div className="rating"><Star size={14} fill="currentColor"/> 4.{9-i}</div><strong>{p.price}</strong></Link>)}</div>}
+function ProductGrid(){return <div className="productGrid innerGrid">{demoProducts.map((p,i)=><Link className="card" href={`/product/${productSlug(p.name)}`} key={p.name}><div className="productImage"><img src={p.img} alt={p.name} loading="lazy"/><span className="miniBadge">{i<2?"POPULAR":"NEXRIG PICK"}</span></div><div className="cat">{p.cat}</div><h3>{p.name}</h3><div className="rating"><Star size={14} fill="currentColor"/> 4.{9-i}</div><strong>{p.price}</strong></Link>)}</div>}
 
 function Shell({title,kicker="NEXRIG",children}:{title:string;kicker?:string;children:React.ReactNode}){return <main><header className="topbar"><Link href="/" className="brand">NEX<span>RIG</span></Link><Link href="/cart"><ShoppingCart size={21}/></Link></header><div className="pageHero"><span className="kicker">{kicker}</span><h1>{title}</h1><p>Performance-first PC components, compatibility guidance, official warranty, and expert support for your next gaming rig.</p></div>{children}<div className="pageLinks"><Link href="/">Home</Link><Link href="/category/all">All Components</Link><Link href="/builder">PC Builder</Link><Link href="/guides/build-gaming-pc">Guides</Link></div></main>}
 
