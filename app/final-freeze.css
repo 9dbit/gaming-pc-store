@@ -16,14 +16,16 @@
 /* Checkout */
 .orderSummaryV2{position:relative}.summaryTrust{border:1px solid rgba(105,217,138,.13)}.checkoutBlock,.orderSummaryV2{box-shadow:0 18px 50px rgba(0,0,0,.10)}.shippingCard,.paymentCard{transition:transform .16s ease,border-color .16s ease,background .16s ease}.shippingCard.selected,.paymentCard.selected{box-shadow:inset 0 0 0 1px rgba(239,17,25,.16)}
 
-/* Chatvice widget: keep floating launcher above mobile bottom nav instead of overlapping it. */
-body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{z-index:94!important}
+/* Chatvice widget */
+body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{z-index:120!important}
+.mobileNavV2{display:none!important}
 
 @media(max-width:759px){
- body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{bottom:calc(82px + env(safe-area-inset-bottom))!important}
+ main{padding-bottom:24px!important}
+ body>iframe[src*="chatvice.app"],body>[id*="chatvice"],body>[class*="chatvice"]{bottom:calc(12px + env(safe-area-inset-bottom))!important}
  .categoryWrap{padding-top:22px}.productsWrap.homeRail{padding-top:32px}.sectionHead h2{font-size:22px}.homeEditorial,.homeSeoCopy{margin-top:34px}.homeTrust div{min-height:112px}
  .commerceToolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.commerceToolbar .searchField{grid-column:1/-1}.commerceToolbar select{min-height:42px}.filterPanel{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px;margin-bottom:14px}.filterPanel h3,.filterPanel>p{grid-column:1/-1}.filterPanel label{min-width:0}.filterPanel select,.filterPanel input[type="range"]{width:100%}.commerceBody h3{min-height:2.6em}.commerceBody .priceRow strong{font-size:13px}.commerceBody .addBtn{min-height:39px}
- .productStory,.productInfoGrid,.reviewSection,.faqSection{padding-top:24px}.productPaymentBlock{margin-bottom:2px}.stickyPay{bottom:calc(78px + env(safe-area-inset-bottom))}
+ .productStory,.productInfoGrid,.reviewSection,.faqSection{padding-top:24px}.productPaymentBlock{margin-bottom:2px}.stickyPay{bottom:calc(12px + env(safe-area-inset-bottom))}
 }
 
 @media(min-width:760px){
