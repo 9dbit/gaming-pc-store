@@ -8,6 +8,7 @@ import "./qa.css";
 import "./polish.css";
 import "./final-freeze.css";
 import "./chatvice-privacy.css";
+import "./product-gallery.css";
 import PaymentStrip from "../components/PaymentStrip";
 import {SiteHeader} from "../components/SiteChrome";
 import ChatviceWidget from "../components/ChatviceWidget";
