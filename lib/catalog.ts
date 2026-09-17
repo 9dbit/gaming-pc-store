@@ -49,6 +49,20 @@ export const products:Product[]=[
 {id:"cooler-aio360",slug:"nexrig-aio-360-lcd",name:"NEXRIG AIO 360 LCD",category:"Cooling",categorySlug:"cooling",brand:"NEXRIG",price:2699000,rating:4.9,reviews:54,stock:8,image:img.cooling,badge:"LCD",description:"Flagship 360mm liquid cooler with LCD pump display for premium high-TDP gaming processors.",specs:{Sockets:"AM5 / LGA1851",Radiator:"360mm",Fans:"3x120mm",Display:"LCD",RGB:"ARGB"},compat:{socket:["AM5","LGA1851"],case:["ATX","E-ATX"]}}
 ];
 
+const uniqueProductImages:Record<string,string>={
+  "cpu-9800x3d":"/api/media/unique-products/cpu-9800x3d.webp",
+  "cpu-9700x":"/api/media/unique-products/cpu-9700x.webp",
+  "cpu-9600x":"/api/media/unique-products/cpu-9600x.webp",
+  "mb-x870":"/api/media/unique-products/mb-x870.webp",
+  "gpu-64cor3":"/api/media/unique-products/gpu-64cor3.webp",
+  "gpu-48cor3":"/api/media/unique-products/gpu-48cor3.webp",
+  "gpu-32cor3":"/api/media/unique-products/gpu-32cor3.webp",
+  "psu-850":"/api/media/unique-products/psu-850.webp",
+  "psu-750":"/api/media/unique-products/psu-750.webp",
+  "psu-1000":"/api/media/unique-products/psu-1000.webp"
+};
+for(const product of products){const image=uniqueProductImages[product.id];if(image)product.image=image;}
+
 export const categories=["all","processor","motherboard","graphics-card","memory","storage","power-supply","gaming-case","monitor","cable","cooling"];
 export const money=(n:number)=>`Rp ${n.toLocaleString("id-ID")}`;
 export const bySlug=(slug:string)=>products.find(p=>p.slug===slug);
