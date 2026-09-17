@@ -4,16 +4,16 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 export const runtime = "nodejs";
 
 const assets = [
-  { key: "tuan-kuda/heroes/hero-rpg.webp", url: "https://uc5c7af17bd086ee1a60bca6aeb0.dl.dropboxusercontent.com/cd/0/get/DISVMjCJ5nU_AqWtyBEHiRfp3PVb8ua0EyItXNAKrb8WqTdG1rFBqI6vgrHm-pSpW33wKNmGDcKpC7gszKe0UgGR5Y32EQhaT71DGF791LQOYtZLLCmalvLrJhTbDmHobPejJjmABQZNGRe3SaQGT8cLIWlCxsyI1MHt0hpEu6eqDQ/file?c_luid=f3923c08", expected: 335294 },
-  { key: "tuan-kuda/heroes/hero-racing.webp", url: "https://uce5265facab264bf393f88f1bfb.dl.dropboxusercontent.com/cd/0/get/DIRohW1-_7EcYGmgUD9DNWn14SK160MvOKWnMHH_5B45zWxSw1AYaPAo7-HM4UxsjS2TxlJR7yFrUX4BJcEOwiboWZuDHUywoqM5lmeP0W0y9co87juwy0q-jWQmaLbwW0IPBrubffuebk2-Tlhri6Eyu_54rlU_H7NT6seUL6g6ow/file?c_luid=f3923c08", expected: 337010 },
-  { key: "tuan-kuda/heroes/hero-god.webp", url: "https://uc82aa793fd846634d128e09fee8.dl.dropboxusercontent.com/cd/0/get/DITncjeWqxW2BHo_IAqNQNB0JqoNZnLhNWMveX2pRiMAGDXPy4VSkDk-EiqvOIqBanH7k207ihG5ZVfvivBTw7LWK8fEv6RuA2kloygwLuHX4LR3M_4W62Zkv-jJDVFy6FJLHGfd7BfzNbi1dE2L1NJlZQHiX9XKd6nKWKNwx_WI5A/file?c_luid=f3923c08", expected: 431838 },
-  { key: "tuan-kuda/products/gpu/rtx-sl64cor3.webp", url: "https://ucf815d64b92d4aad2ed6acdd452.dl.dropboxusercontent.com/cd/0/get/DIQ1RqZOVIqfjrZ5ZUV-JDYGPq6s9MljDBDLjy7LXGhJETvXntFnf8yWIBjcIOOsnuhtPiEKNp-msMjwPMbrvJneDtcrX-d2t1TiQRG2qg20CjnHoYpi1xu-kHZb64SzjDj-oPy3_UA0X3opOw5gruH9FqCL_eg1vHUyTuvM9zCq2Q/file?c_luid=f3923c08", expected: 236848 },
-  { key: "tuan-kuda/products/storage/gen5-nvme-2tb.webp", url: "https://ucddf980e8404dc53aa94e68e0b6.dl.dropboxusercontent.com/cd/0/get/DISYXeOyyTrovfXxEa9tpvWJqNLgUfDzfSxOJNNFKabE2kWIp4S3KmCRB3Sr-KlTelaxvllxqf1sDx14pT0yQ7KmLhAUv8Zh8c6cSMbuXusYp_EzLtXZSh4sfYtmnxopuwWxnioNqXmDBHBtfCLDKZhYzmqJudU72x0qSveppiIvHQ/file?c_luid=f3923c08", expected: 251792 },
-  { key: "tuan-kuda/products/power-supply/850w-gold.webp", url: "https://uc2f5b9de96917174365cf1b9d62.dl.dropboxusercontent.com/cd/0/get/DITnVfmDh7K2-gvE8KqN0CyAcruCyYZfYP_-2rryu3dCb0ERP5NXaNXZWlIFbB1E5H1AzycRG6m2Pnp9jTo8MbHDfuwhO3_1-BADF06MmiFSSD20SRXDWXCi203ZqSE8nsIJHPVAJoHHoMkFUc3TK8XYDzZMXe3AibsigYgmTXNBng/file?c_luid=f3923c08", expected: 264358 },
-  { key: "tuan-kuda/products/gaming-case/panorama-rgb.webp", url: "https://ucb288003a8bafac72be20b5d102.dl.dropboxusercontent.com/cd/0/get/DIQmcHbyYsEoB0syG4W23rM9B8kAe_Mm1ms_NSecJN1Zicc3ORhbmsU0DpsiCedqt9jdllyKM6gxWzP5TDr4PLGTVniBmoj0-vcACmlsee85B5q_J5VDJ8WtYSiV_ZC72z9lPqxjFxhgNtx4Q7US470f6X7P4N-hm9DZ1XjG82C-PA/file?c_luid=f3923c08", expected: 320936 },
-  { key: "tuan-kuda/products/monitor/27-qhd-180hz.webp", url: "https://uca31a32f1cefe1ac7d72a3f4e50.dl.dropboxusercontent.com/cd/0/get/DITVyOFU_HzCDulLPVeopYYYPEWapNBoph_zkC-UoOLir_wbjqlazxff2-ayhFmoVwFwMFHwsXJ1g6PDouBXFivWoAH-SXQ0_oCugQ2jenLXw_lpFBByr7-aCRJGpRsSQ2vPb_mZShFQ92TvQfGjPNPkx2sP6T9vTMnGfDdp6uwQmg/file?c_luid=f3923c08", expected: 247702 },
-  { key: "tuan-kuda/products/cable/premium-kit.webp", url: "https://uc5d8dd49e6cad232dd33eece513.dl.dropboxusercontent.com/cd/0/get/DIR-t1KT4Zk_c3v4BABzf96iHP0A9rFeOaiIQpazdw3lXAld0BjI5MUx2QjF93cQHJQ5eCmJAfpl0Q3xloXvNezdflDyQrjNGuQQBBDl01zSRDGi728nc0cDZ1djKw39-GiUmjGHPmetOaTnaY9mzmk9ylBKPipCfddpSSOeim7VVw/file?c_luid=f3923c08", expected: 278472 },
-  { key: "tuan-kuda/products/cooling/360-aio.webp", url: "https://uc2b7d70045d0022691cc7d1dc50.dl.dropboxusercontent.com/cd/0/get/DIQXWwoR1f71vuCXSXz2BI_5HHg6lfuoldv9RXDqQH-EOgSa0e04AcGwPDoYYQRUaoJ6IujrSRFSuI5JouiLn6ZVGgLckt-9SefKYf4O7xUYMp0OghS-E_gKgAFtoLgFQ2ptd8pOch0Er1n9Pu85dKIc1wI80rNVdGl-JD0IofjsmA/file?c_luid=f3923c08", expected: 258728 },
+  { key: "unique-products/cpu-9800x3d.webp", url: "https://uc22e9911b773c21f38055f017b9.dl.dropboxusercontent.com/cd/0/get/DIRGnuPJnmhTB4U-7d-HcOF5jBwHKBjNd5ODFzOuhjqeWEQS84WPNuKpTs7US0RgJ3Kr5e666kUa4xW1UmB1bAFDFkjWqHSpetBpOGUj2rhM73DFJg0tYz2G-jNSec0yCiF8Q5bgfaO9xPvXadCh7kSH8cOwsWDyaA7m9pJ7uYW1eg/file?c_luid=f3923c08", expected: 150756 },
+  { key: "unique-products/cpu-9700x.webp", url: "https://ucf1382f4a858396013b1928427b.dl.dropboxusercontent.com/cd/0/get/DIRiNZOJgrEzyirVUn7VobhqkaTsf1MVGQKCLldU4KZf67pilR_C6s--2OCWtuyvldbf3eI0v47Rrk4kMfwqpuC8mHek2WzF9yGiln2nBirfcyZLXAjfSNxtJWBfxuuNkO6SOV0oodqf1Dbbetg6C6zUKDINbPqzc6wbzK-HZXmsmA/file?c_luid=f3923c08", expected: 181338 },
+  { key: "unique-products/cpu-9600x.webp", url: "https://uc8ab928fd8460482c5b5b0259f4.dl.dropboxusercontent.com/cd/0/get/DITefbWNYBym4rte85koArAWkgJB9S4rXaNxQKqyFmmZnm8wcsUkdWih12XJR7oNywfMNHlsDoobhh6_yJc-X3aLtDVJ7oxDpN80WvLp1NhiitXv-sG_OQK3hmWF--0A7J7jadyNzVKEAAuC9kP65GlggPo7YVZGniAMCiye3Q5tkw/file?c_luid=f3923c08", expected: 152804 },
+  { key: "unique-products/mb-x870.webp", url: "https://uc77f0aac3f558c364b5c57f5b05.dl.dropboxusercontent.com/cd/0/get/DIQe0P-7RvLpYjcQ3LoercgM2k59Nn_80GIta8NQSsML5GAbjtrcXsfB2K7JDnoJ0KzI35G5cgwIMlvjnpAXKKrGb37tRInBVq6bAkiSanAMEoC1oYhSfsjaqdtMAdvVB3VmJMdtQqMPaTyYSnQFoz-FfNkDNeiraJVbQQ9xHxiIug/file?c_luid=f3923c08", expected: 188932 },
+  { key: "unique-products/gpu-64cor3.webp", url: "https://uc1a9e891880abbb2f8d1337ae02.dl.dropboxusercontent.com/cd/0/get/DITfiYrNRr6wKMUUL12PqMTyByTfAxppKVBvMgutvS_YdNoDQBXw8HMptki1X_Fzpe6Y2ecfdqwyYwkgDwp8qEs4b6oeTqey8WVx1lgWYK6UGat23RovZYZzcQdxzzNWf_IDjhVaz9ENO_PXPU6he9PtKcjFLyhe9Nv1WbK4K7k_Aw/file?c_luid=f3923c08", expected: 150648 },
+  { key: "unique-products/gpu-48cor3.webp", url: "https://uc1d633b000494c10033af5acd4e.dl.dropboxusercontent.com/cd/0/get/DIQ7g264ooALButm4y5DCNXhy4IpiRDo78YBR52W85pINHk-l4Kvfp9cLl7q4YAzHvTU5ZZSgF_2Mdf4b1hgyUcEI7PNkbVjgeHPiJPTT4tUgEnvQ9hAcKGFq_pwBkzpZxjt-8NrTyU1Cshd9IpRcNl0TQGFbAUxU9LONw-mai68fQ/file?c_luid=f3923c08", expected: 153284 },
+  { key: "unique-products/gpu-32cor3.webp", url: "https://uc99cf919c930cb88d32101da820.dl.dropboxusercontent.com/cd/0/get/DITVGoFRz4kU6Ni6JtdDOniIwlQ7vj_2gAyH1NVNs30PubLnzSpU5VbsYabec3wRUKnfmcP7PnLAc6cUOmPa3p8kD2zheZG0NbZ3ksV1r61jRr_-O_5jHV6WF60FTcgl5SeL8O5lk4J_wOLNrdVJM_C8x3tHPQIyAt9sP6BAwjh4Tw/file?c_luid=f3923c08", expected: 97380 },
+  { key: "unique-products/psu-850.webp", url: "https://ucd84b4a694d8f6fcbde5b7c2ca3.dl.dropboxusercontent.com/cd/0/get/DIR3sC9VWK7Fs6aOWOEa4IocytbSYICovvabp2_27LtRWGPnG0N8eYTXe6NV_FfmQ2cvP-ooLfsNMfcZ6UTssWBy4pbZAfWQCE9oR5qyMCbSk7h-H2Ox85SYSnmSjd2AgGPqpZTg6XzbkIQ1MWnG7tycObN4E0Ii0uSOE62MP6BdxQ/file?c_luid=f3923c08", expected: 178700 },
+  { key: "unique-products/psu-750.webp", url: "https://ucc1bac9ad5d11b8dc578e652bee.dl.dropboxusercontent.com/cd/0/get/DIR_nCEGK_xxp13BUhUGYfk4P6CFCATzMhLd6IogntLAfcAYDuHY71pQSXHlkpRd7PCMwe9niNFMoPSqE8J3-Oy-eBVcKHDuiyKEZ4oAtgRtZO-LtpVUjM81T4kkpwmT46HPBIevoBxQw6_Za81bZSLRzgK4RWyiLlx1AEBIUjViDw/file?c_luid=f3923c08", expected: 165528 },
+  { key: "unique-products/psu-1000.webp", url: "https://uc9fcf4c4a211d9e9446e9098ee0.dl.dropboxusercontent.com/cd/0/get/DIQFMHt-ej5QIKEwkrH2E1WzaUoJd7cj0WDCRa0NT2ykmwEqkLmXXkuzFabIVsht5J3o2muqkep1GHwSe2cHitYPYl7FPi0PcdhTm1GOw_xHmTvJ0yYKhgzAYpoWMYB1dXSpQh_oxhiWEI4qgcLj7Gf04yWibCm-KK_6aGN7we6BXw/file?c_luid=f3923c08", expected: 157492 },
 ] as const;
 
 function client() {
@@ -25,7 +25,7 @@ function client() {
   });
 }
 
-export async function POST() {
+async function migrate() {
   const s3 = client();
   const results = [];
   for (const asset of assets) {
@@ -44,3 +44,6 @@ export async function POST() {
   }
   return NextResponse.json({ ok: results.every(x => x.ok), results });
 }
+
+export async function GET() { return migrate(); }
+export async function POST() { return migrate(); }
