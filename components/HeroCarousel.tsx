@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-type Slide = { id: string; mobile: string; desktop: string; alt: string };
+type Slide = { id: string; mobile: string; desktop: string; fallbackMobile?: string; fallbackDesktop?: string; alt: string };
 
 export default function HeroCarousel({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(0);
@@ -24,9 +24,17 @@ export default function HeroCarousel({ slides }: { slides: Slide[] }) {
                 alt={slide.alt}
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding="async"
+                fetchPriority={i === 0 ? "high" : "auto"}
                 onError={(event) => {
                   const img = event.currentTarget;
-                  if (img.src !== slide.desktop) img.src = slide.desktop;
+                  const isDesktop = window.matchMedia("(min-width: 760px)").matches;
+                  const fallback = isDesktop ? slide.fallbackDesktop : slide.fallbackMobile;
+                  if (fallback && !img.dataset.fallbackApplied) {
+                    img.dataset.fallbackApplied = "true";
+                    const source = img.parentElement?.querySelector("source");
+                    if (source && slide.fallbackDesktop) source.srcset = slide.fallbackDesktop;
+                    img.src = fallback;
+                  }
                 }}
               />
             </picture>
