@@ -1,0 +1,1 @@
+TUAN KUDA storefront media assets generated for product and hero placement.
