@@ -11,6 +11,7 @@ import "./chatvice-privacy.css";
 import PaymentStrip from "../components/PaymentStrip";
 import {SiteHeader} from "../components/SiteChrome";
 import ChatviceWidget from "../components/ChatviceWidget";
+import ProductImageOverride from "../components/ProductImageOverride";
 
 const BASE="https://gaming-pc-store-web-production.up.railway.app";
 
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader/>
         {children}
         <PaymentStrip/>
+        <ProductImageOverride/>
         <ChatviceWidget/>
       </body>
     </html>
