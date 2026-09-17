@@ -42,7 +42,8 @@ async function migrate() {
     await s3.send(new PutObjectCommand({ Bucket: process.env.BUCKET, Key: asset.key, Body: body, ContentType: "image/webp", CacheControl: "public, max-age=31536000, immutable" }));
     results.push({ key: asset.key, ok: true, bytes: body.length });
   }
-  return NextResponse.json({ ok: results.every(x => x.ok), results });
+  const ok = results.every(x => x.ok);
+  return NextResponse.json({ ok, results }, { status: ok ? 200 : 502 });
 }
 
 export async function GET() { return migrate(); }
