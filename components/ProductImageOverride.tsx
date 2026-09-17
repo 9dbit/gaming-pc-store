@@ -45,10 +45,43 @@ function applyUniqueProductImages(root: ParentNode = document){
   });
 }
 
+function enhanceProductGalleries(root: ParentNode = document){
+  root.querySelectorAll<HTMLElement>(".productGallery").forEach(gallery=>{
+    if(gallery.dataset.selectableGallery==="true")return;
+    const stage=gallery.querySelector<HTMLElement>(".productStage");
+    const stageImg=stage?.querySelector<HTMLImageElement>("img");
+    const buttons=[...gallery.querySelectorAll<HTMLButtonElement>(".imageThumbs button")];
+    if(!stage||!stageImg||!buttons.length)return;
+
+    gallery.dataset.selectableGallery="true";
+    const views=["front","detail","package","build"];
+    const select=(index:number)=>{
+      const view=views[index]||"front";
+      stage.dataset.galleryView=view;
+      buttons.forEach((button,i)=>{
+        const active=i===index;
+        button.classList.toggle("selected",active);
+        button.setAttribute("aria-pressed",active?"true":"false");
+      });
+    };
+
+    buttons.forEach((button,index)=>{
+      button.type="button";
+      button.setAttribute("aria-label",`Show ${button.textContent?.trim()||`product image ${index+1}`}`);
+      button.addEventListener("click",()=>select(index));
+    });
+    select(0);
+  });
+}
+
 export default function ProductImageOverride(){
   useEffect(()=>{
-    applyUniqueProductImages();
-    const observer=new MutationObserver(()=>applyUniqueProductImages());
+    const apply=()=>{
+      applyUniqueProductImages();
+      enhanceProductGalleries();
+    };
+    apply();
+    const observer=new MutationObserver(apply);
     observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:["alt","src"]});
     return()=>observer.disconnect();
   },[]);
