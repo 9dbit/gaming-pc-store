@@ -8,7 +8,7 @@ type Slide = { id: string; mobile: string; desktop: string; fallbackMobile?: str
 export default function HeroCarousel({ slides }: { slides: Slide[] }) {
   const [active, setActive] = useState(0);
   useEffect(() => {
-    const timer = window.setInterval(() => setActive((v) => (v + 1) % slides.length), 5200);
+    const timer = window.setInterval(() => setActive((v) => (v + 1) % slides.length), 2000);
     return () => window.clearInterval(timer);
   }, [slides.length]);
 
